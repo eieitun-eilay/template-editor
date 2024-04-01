@@ -5,10 +5,20 @@ import StarterKit from '@tiptap/starter-kit'
 import Toolbar from './Toolbar';
 import Underline from "@tiptap/extension-underline";
 
-const Tiptap = ({ onChange, content }) => {
-  const handleChange = (newContent) => {
+interface TiptapProps {
+  onChange: (newContent: string) => void;
+  content: string;
+}
+
+const Tiptap: React.FC<TiptapProps> = ({ onChange, content }) => {
+  const handleChange = (newContent: string) => {
     onChange(newContent);
   };
+
+// const Tiptap = ({ onChange, content }) => {
+//   const handleChange = (newContent) => {
+//     onChange(newContent);
+//   };
 
   
   const editor = useEditor({

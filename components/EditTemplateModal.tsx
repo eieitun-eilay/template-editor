@@ -2,14 +2,20 @@
 import React, { useState } from 'react';
 import Tiptap from './Tiptap';
 
-export default function EditTemplateModal({ initialContent, onSave, onClose }) {
+interface EditTemplateModalProps {
+  initialContent: any; // Replace 'any' with the appropriate type
+  onSave: (content: any) => void; // Replace 'any' with the appropriate type
+  onClose: () => void; // Assuming onClose is a function with no arguments and no return value
+}
+
+export default function EditTemplateModal({ initialContent, onSave, onClose }: EditTemplateModalProps) {
   const [editedContent, setEditedContent] = useState(initialContent);
 
-  const handleContentChange = (newContent) => {
+  const handleContentChange = (newContent: any) => {
     setEditedContent(newContent);
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSave(editedContent);
   };

@@ -4,8 +4,8 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import EditTemplateModal from './EditTemplateModal';
 
 export default function TemplateList() {
-  const [data, setData] = useState([]);
-  const [selectedTemplate, setSelectedTemplate] = useState(null); // Define setSelectedTemplate here
+  const [data, setData] = useState<any[]>([]);
+  const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null); // Define setSelectedTemplate here
   const colors = ['#DAF7A6', '#FADBD8', '#D5F5E3', '#D6EAF8', '#FCF3CF'];
 
   useEffect(() => {
@@ -16,11 +16,11 @@ export default function TemplateList() {
     }
   }, []);
 
-  const handleEditClick = (content) => {
+  const handleEditClick = (content: string) => {
     setSelectedTemplate(content);
   };
 
-  const handleSaveEdit = (editedContent) => {
+  const handleSaveEdit = (editedContent: string) => {
     const newData = data.map((item) => {
       if (item.content === selectedTemplate) {
         return { ...item, content: editedContent };
@@ -36,7 +36,7 @@ export default function TemplateList() {
     setSelectedTemplate(null);
   };
 
-  const handleDeleteClick = (id) => {
+  const handleDeleteClick = (id: string) => {
     const newData = data.filter((item) => item.id !== id);
     localStorage.setItem('myData', JSON.stringify(newData));
     setData(newData);
@@ -49,8 +49,8 @@ export default function TemplateList() {
           {data.map((item: any, idx: number) => (
             <div key={idx} style={{ backgroundColor: colors[idx % colors.length] }}>
               <div className="border border-slate-700 px-6 py-4 font-bold text-slate-950">
-                <span className='pr-11'>Template - {idx + 1}</span>
-                <div className="inline-block pl-4 justify-end"> {/* Wrap buttons in a div for alignment */}
+                <span className='pr-6'>Template - {idx + 1}</span>
+                <div className="inline-block pl-7 justify-end"> {/* Wrap buttons in a div for alignment */}
                   <button className="px-4 py-2 border border-black rounded-md mr-2" onClick={() => handleEditClick(item.content)}>Edit</button>
                   <button className="px-4 py-2 border border-red-500 rounded-md text-red-500" onClick={() => handleDeleteClick(item.id)}>Delete</button>
                 </div>
