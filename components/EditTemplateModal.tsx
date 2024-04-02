@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import Tiptap from './Tiptap';
 
 interface EditTemplateModalProps {
-  initialContent: any; // Replace 'any' with the appropriate type
-  onSave: (content: any) => void; // Replace 'any' with the appropriate type
-  onClose: () => void; // Assuming onClose is a function with no arguments and no return value
+  initialContent: any; 
+  onSave: (content: any) => void; 
+  onClose: () => void; 
 }
 
 export default function EditTemplateModal({ initialContent, onSave, onClose }: EditTemplateModalProps) {

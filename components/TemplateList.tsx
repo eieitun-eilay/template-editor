@@ -48,9 +48,9 @@ export default function TemplateList() {
         <Masonry gutter="20px">
           {data.map((item: any, idx: number) => (
             <div key={idx} style={{ backgroundColor: colors[idx % colors.length] }}>
-              <div className="border border-slate-700 px-6 py-4 font-bold text-slate-950">
-                <span className='pr-6'>Template - {idx + 1}</span>
-                <div className="inline-block pl-7 justify-end"> {/* Wrap buttons in a div for alignment */}
+              <div className="border border-slate-700 px-6 py-4 flex justify-between items-center">
+                <span>Template - {idx + 1}</span>
+                <div className="flex gap-2"> {/* Wrap buttons in a div for alignment */}
                   <button className="px-4 py-2 border border-black rounded-md mr-2" onClick={() => handleEditClick(item.content)}>Edit</button>
                   <button className="px-4 py-2 border border-red-500 rounded-md text-red-500" onClick={() => handleDeleteClick(item.id)}>Delete</button>
                 </div>
